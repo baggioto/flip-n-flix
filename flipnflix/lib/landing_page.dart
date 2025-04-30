@@ -1,6 +1,5 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:go_router/go_router.dart';
 
 import 'components/primary_button.dart';
 import 'components/secondary_button.dart';
@@ -42,7 +41,8 @@ class LandingPage extends StatelessWidget {
                   "Explore a vast collection of blockbuster movies, timeless classics, and the latest releases.",
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13),
                 ),
-                PrimaryButton(onPressed: () {}, text: "Login"),
+                PrimaryButton(
+                    onPressed: () => context.go('/home'), text: "Login"),
                 SecondaryButton(onPressed: () {}, text: "Sign Up")
               ],
             ),
