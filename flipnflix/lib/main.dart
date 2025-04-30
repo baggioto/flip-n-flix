@@ -1,3 +1,4 @@
+import 'package:flipnflix/app_config.dart';
 import 'package:flipnflix/landing_page.dart';
 import 'package:flipnflix/routes.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    // TODO: remover esse código depois
+    print(AppConfig.instance.apiKey);
+
     return MaterialApp.router(
       title: 'Flip N',
       theme: ThemeData(
