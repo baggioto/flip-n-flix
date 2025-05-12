@@ -5,6 +5,10 @@ import 'package:flipnflix/movie_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+String subRoute(String primary, String child) {
+  return '$primary$child';
+}
+
 final router =
     GoRouter(initialLocation: '/landing', debugLogDiagnostics: true, routes: [
   GoRoute(
@@ -15,19 +19,15 @@ final router =
   ),
   ShellRoute(
       builder: (context, state, child) {
-        int? index;
-        if (state.extra is int) {
-          index = state.extra as int;
-        }
-        return HomePage(index: index ?? 0, child: child);
+        return HomePage(child: child);
       },
       routes: [
         GoRoute(
             builder: (context, state) => const Home(),
-            path: '/home',
+            path: HomePage.routeName,
             routes: [
               GoRoute(
-                  path: '/moviedetail',
+                  path: HomeDetailScreen.routeName,
                   builder: (context, state) {
                     final id = state.extra as int;
                     return HomeDetailScreen(id: id);

@@ -1,5 +1,4 @@
 import 'package:flipnflix/app_config.dart';
-import 'package:flipnflix/landing_page.dart';
 import 'package:flipnflix/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
     print(AppConfig.instance.apiKey);
 
     return MaterialApp.router(
-      title: 'Flip N',
+      title: 'Flip N Flix',
       theme: ThemeData(
         textTheme: GoogleFonts.getTextTheme("Inter")
             .apply(bodyColor: Colors.white, displayColor: Colors.white),

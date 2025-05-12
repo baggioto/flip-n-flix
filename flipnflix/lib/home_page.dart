@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.child, required this.index});
+  static const String routeName = "/home";
+  const HomePage({super.key, required this.child});
   final Widget child;
-  final int index;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -16,16 +16,21 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    index = widget.index;
+    index = 0;
     super.initState();
   }
 
-  void changePage(int index) {
-    final route = tabs[index];
+  void changePage(int value) {
+    final route = tabs[value];
+
+    setState(() {
+      index = value;
+    });
+
     if (!context.mounted) {
       return;
     }
-    context.go(route, extra: index);
+    context.go(route, extra: value);
   }
 
   @override
@@ -34,7 +39,7 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(top: false, child: widget.child),
       bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
-          currentIndex: widget.index,
+          currentIndex: index,
           onTap: (value) => changePage(value),
           unselectedItemColor: Colors.grey,
           showUnselectedLabels: true,
