@@ -5,8 +5,7 @@ import 'package:flipnflix/models/movie.dart';
 class MovieRepository {
   final Dio client = Dio(BaseOptions(
       baseUrl: AppConfig.instance.baseUrl,
-      headers: {'Authorization': 'Bearer ${AppConfig.instance.token}'},
-      queryParameters: {'language': 'pt-BR'}));
+      headers: {'Authorization': 'Bearer ${AppConfig.instance.token}'}));
 
   Future<List<Movie>> getMovies() async {
     final response = await client.get('/discover/movie', queryParameters: {"page": 1});
@@ -14,5 +13,11 @@ class MovieRepository {
     return (response.data['results'] as List)
         .map((movie) => Movie.fromJson(movie))
         .toList();
+  }
+
+  Future<Movie> getMovieDetail(int id) async {
+    final response = await client.get('/movie/$id');
+
+    return Movie.fromDetailsJson(response.data);
   }
 }
