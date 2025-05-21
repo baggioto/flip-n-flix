@@ -1,6 +1,7 @@
+import 'package:flipnflix/home_page.dart';
 import 'package:flipnflix/models/movie.dart';
 import 'package:flipnflix/movie_detail.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flipnflix/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -26,8 +27,7 @@ class MovieCard extends StatelessWidget {
             width: 120),
       ),
       onTap: () {
-        Navigator.push(context, CupertinoPageRoute(builder: (context) => HomeDetailScreen(id: movie.id)));
-        // context.go('/moviedetail', extra: movie.id);
+        context.go(subRoute(HomePage.routeName, HomeDetailScreen.routeName), extra: movie.id);
       },
     );
   }
