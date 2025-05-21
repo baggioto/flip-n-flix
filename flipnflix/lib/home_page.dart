@@ -31,8 +31,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: widget.child),
+      body: SafeArea(top: false, child: widget.child),
       bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
           currentIndex: widget.index,
           onTap: (value) => changePage(value),
           unselectedItemColor: Colors.grey,
